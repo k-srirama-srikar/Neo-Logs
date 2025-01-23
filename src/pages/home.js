@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <header className="home-header">
-        <h1>Welcome to the Blogging Platform</h1>
+        <h1>Welcome to the Neo Logs</h1>
         <p>Discover and share ideas, thoughts, and stories.</p>
       </header>
       <section className="home-content">
