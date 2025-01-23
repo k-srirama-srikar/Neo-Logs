@@ -10,11 +10,18 @@
     padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+
+
+  @font-face {
+  font-family: 'noxis';
+  src: url('../../static/noxis/Noxis - Personal Use.otf') format('opentype');
+}
   
   /* Logo styling */
   .logo a {
+    font-family: noxis;
     font-size: 1.5rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: white;
     text-decoration: none;
   }
