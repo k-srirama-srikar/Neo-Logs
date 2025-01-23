@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/register.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ const Register = () => {
       console.log('Registration successful');
       setError('');
       // Redirect or show success message
+      navigate('/login'); // Change '/login' to your desired route
     } catch (err) {
       setError('Error registering user');
       console.log(err);
