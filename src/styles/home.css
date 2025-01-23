@@ -1,5 +1,18 @@
 /* Home.css */
 
+
+
+@font-face {
+  font-family: 'neon';
+  src: url('../../static/lunar-escape/Lunar\ Escape.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'fon2';
+  src: url('../../static/andina/Andina\ Demo.otf') format('opentype');
+}
+
+
 /* General container styling */
 .home-container {
     font-family: Arial, sans-serif;
@@ -17,11 +30,13 @@
   }
   
   .home-header h1 {
-    font-size: 2.5rem;
+    font-family: neon;
+    /* font-size: 2.5rem; */
     margin: 0;
   }
   
   .home-header p {
+    font-family: fon2;
     font-size: 1.2rem;
     margin-top: 10px;
   }

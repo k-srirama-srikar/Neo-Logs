@@ -13,9 +13,9 @@
 
 
   @font-face {
-  font-family: 'noxis';
-  src: url('../../static/noxis/Noxis - Personal Use.otf') format('opentype');
-}
+    font-family: 'noxis';
+    src: url('../../static/noxis/Noxis - Personal Use.otf') format('opentype');
+  }
   
   /* Logo styling */
   .logo a {
