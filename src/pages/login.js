@@ -1,33 +1,73 @@
 import React, { useState } from 'react';
 import '../styles/login.css'; // Import the CSS file for styling
+// import axios from 'axios';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Perform login (mock API call here, replace with real API)
-    const response = await fetch('http://localhost:8000/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.json();
-
-    if (response.ok) {
-      console.log('Login successful:', data);
-      setError('');
-      // Redirect to another page or set authentication state
-    } else {
-      setError(data.message || 'Invalid login credentials');
+    // console.log("Attempting login with:", { identifier, password });
+  
+    try {
+      const response = await fetch('http://localhost:8000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ identifier, password }),
+      });
+  
+      const data = await response.json();
+      console.log("Response:", response.status, data);
+  
+      if (response.ok) {
+        console.log('Login successful:', data);
+        localStorage.setItem("token", data.token);
+        window.location.href = "/dashboard"; // Redirect on success
+      } else {
+        setError(data.error || 'Invalid login credentials');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      setError('Server error. Please try again.');
     }
   };
+  
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await axios.post('http://localhost:8000/api/login', {
+  //       identifier, 
+  //       password,
+  //     });
+
+  //     console.log('Login successful:', response.data);
+  //     localStorage.setItem('token', response.data.token); // Store token
+  //     setError('');
+  //     window.location.href = '/home'; // Redirect on success
+  //   } catch (err) {
+  //     setError(err.response?.data?.error || 'Invalid login credentials');
+  //   }
+
+
+  //   // Perform login (mock API call here, replace with real API)
+  //   // const response = await axios.post('http://localhost:8000/api/login',{
+  //   //   identifier,
+  //   //   password,
+  //   // });
+
+  //   // const data = await response.json();
+
+  //   // if (response.ok) {
+  //   //   console.log('Login successful:', data);
+  //   //   setError('');
+  //   //   // Redirect to another page or set authentication state
+  //   // } else {
+  //   //   setError(data.message || 'Invalid login credentials');
+  //   // }
+  // };
 
   return (
     <div className="login-container">
@@ -35,12 +75,12 @@ const Login = () => {
         <h2>Login</h2>
         {error && <p className="error-message">{error}</p>}
         <div className="form-group">
-          <label htmlFor="email">Email:</label>
+          <label htmlFor="email">Email or User Name:</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            id="name"
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
             required
           />
         </div>
