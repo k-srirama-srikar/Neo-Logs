@@ -10,8 +10,19 @@ const Register = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const validateUsername = (username)=>{
+    const regx=/^[a-zA-Z0-9_]{3,20}$/; // only letters, numbers, underscores and 3-20 chars
+    return regx.test(username);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate username before sending request
+    if (!validateUsername(name)) {
+      setError('Username must be 3-20 characters long and contain only letters, numbers, or underscores.');
+      return;
+    }
 
     try {
       // Send registration request to the backend
@@ -26,7 +37,7 @@ const Register = () => {
       // Redirect or show success message
       navigate('/login'); // Change '/login' to your desired route
     } catch (err) {
-      setError('Error registering user');
+      setError(err.response?.data?.error || 'Error registering user');
       console.log(err);
     }
   };
@@ -37,7 +48,7 @@ const Register = () => {
         <h2>Register</h2>
         {error && <p className="error-message">{error}</p>}
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">User Name:</label>
           <input
             type="text"
             id="name"

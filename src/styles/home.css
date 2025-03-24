@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'neon';
-  src: url('../../static/lunar-escape/Lunar\ Escape.otf') format('opentype');
+  src: url('../../static/Amita/Amita-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -31,6 +31,7 @@
   
   .home-header h1 {
     font-family: neon;
+    font-weight: normal;
     /* font-size: 2.5rem; */
     margin: 0;
   }
