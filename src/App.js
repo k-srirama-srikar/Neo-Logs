@@ -7,6 +7,7 @@ import Header from './components/header';
 import Register from './pages/register'; // Import the Register component
 import Login from './pages/login';
 import NotFound from './pages/notfound';
+import DashboardPage from './pages/dashboard';
 function App() {
   return (
     // <div className="App">
@@ -33,6 +34,7 @@ function App() {
           <Route path="/register" element={<Register />} /> {/* Register Page */}
           <Route path='/login' element={<Login/>}/>
           <Route path="*" element={<NotFound />} />
+          <Route path="/users/:username" element={<DashboardPage />} />
         </Routes>
       </Router>
     // );
