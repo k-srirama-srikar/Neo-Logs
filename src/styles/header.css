@@ -41,6 +41,7 @@
   
   .nav-links li {
     font-size: 1rem;
+    
   }
   
   .nav-links a {
@@ -65,5 +66,25 @@
       flex-direction: column;
       gap: 10px;
     }
+  }
+
+
+  .navbar .logout-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    /* padding: 8px 12px; */
+    padding: 2px 2px;
+    border-radius: 5px;
+  }
+  
+  .navbar .logout-btn {
+    background-color: red;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navbar .logout-btn:hover {
+    background-color: darkred;
   }
   

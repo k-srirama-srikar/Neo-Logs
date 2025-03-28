@@ -1,23 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const UserProfile = ({ username }) => {
-  const [profile, setProfile] = useState(null);
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/users/${username}`)
-      .then((res) => setProfile(res.data))
-      .catch((err) => console.error(err));
+    const fetchUserProfile = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/api/users/${username}`);
+        setUser(response.data);
+      } catch (err) {
+        setError("User not found");
+      }
+    };
+
+    fetchUserProfile();
   }, [username]);
 
-  if (!profile) return <p>Loading profile...</p>;
+  if (error) return <p>{error}</p>;
+  if (!user) return <p>Loading...</p>;
 
   return (
-    <div className="profile">
-      <h2>{profile.name}</h2>
-      <p>{profile.bio}</p>
-      <p>Followers: {profile.followersCount}</p>
-      <p>Following: {profile.followingCount}</p>
+    <div className="user-profile">
+      <img src={user.profile_picture || "/default-profile.png"} alt="Profile" />
+      <h2>{user.full_name || user.name}</h2>
+      <p>{user.bio || "No bio available"}</p>
+      <p>Email: {user.email}</p>
     </div>
   );
 };

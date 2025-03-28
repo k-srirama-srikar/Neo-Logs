@@ -32,7 +32,7 @@ const Register = () => {
         password,
       });
 
-      console.log('Registration successful');
+      console.log('Registration successful for user:', response.name);
       setError('');
       // Redirect or show success message
       navigate('/login'); // Change '/login' to your desired route

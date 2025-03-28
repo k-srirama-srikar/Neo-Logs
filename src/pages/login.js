@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../styles/login.css'; // Import the CSS file for styling
 // import axios from 'axios';
+import { useNavigate } from "react-router-dom"; // Import navigation hook
+import {AuthContext} from '../context/AuthContext'; // importing the auth provider 
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
   const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log("Attempting login with:", { identifier, password });
@@ -24,8 +28,12 @@ const Login = () => {
   
       if (response.ok) {
         console.log('Login successful:', data);
-        localStorage.setItem("token", data.token);
-        window.location.href = "/dashboard"; // Redirect on success
+        // localStorage.setItem("token", data.token);
+        console.log(data);
+        login(data.user.name, data.token); // Store login state
+        console.log("login details: ", data.user.name)
+        console.log("token details",data.token)
+        navigate(`/users/${data.user.name}`); // Redirect on success
       } else {
         setError(data.error || 'Invalid login credentials');
       }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import UserProfile from "../components/user_profile";
-import UserBlogs from "../components/user_blogs";
+// import UserBlogs from "../components/user_blogs";
 // import FollowersList from "../components/FollowersList";
 // import Notifications from "../components/Notifications";
 
@@ -11,11 +11,11 @@ const DashboardPage = () => {
   return (
     <div className="dashboard-container">
       <UserProfile username={username} />
-      <div className="dashboard-content">
+      {/* <div className="dashboard-content">
         <UserBlogs username={username} />
-        {/* <FollowersList username={username} />
-        <Notifications username={username} /> */}
-      </div>
+        <FollowersList username={username} />
+        <Notifications username={username} />
+      </div> */}
     </div>
   );
 };
