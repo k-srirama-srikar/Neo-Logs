@@ -1,0 +1,30 @@
+.dashboard-container {
+    display: flex;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .profile-sidebar {
+    width: 20%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+  
+  .dashboard-content {
+    width: 80%;
+    padding: 20px;
+  }
+  .tab-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .tab-buttons button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  } 

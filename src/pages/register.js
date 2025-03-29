@@ -26,13 +26,13 @@ const Register = () => {
 
     try {
       // Send registration request to the backend
-      const response = await axios.post('http://localhost:8000/api/register', {
+      await axios.post('http://localhost:8000/api/register', {
         name,
         email,
         password,
       });
 
-      console.log('Registration successful for user:', response.name);
+      console.log('Registration successful!');
       setError('');
       // Redirect or show success message
       navigate('/login'); // Change '/login' to your desired route
