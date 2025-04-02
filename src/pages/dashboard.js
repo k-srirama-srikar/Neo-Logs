@@ -17,7 +17,9 @@ const DashboardPage = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/users/${username}`)
-      .then((response) => setIsOwner(response.data.is_owner))
+      .then((response) => {console.log("API Response:", response.data);setIsOwner(response.data.is_owner);
+        
+      })
       .catch((error) => console.error("Error fetching profile", error));
   }, [username]);
 

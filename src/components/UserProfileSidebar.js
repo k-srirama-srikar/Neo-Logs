@@ -7,13 +7,18 @@ const UserProfileSidebar = ({ username }) => {
   const { user } = useContext(AuthContext); // Get logged-in user info
   const [profile, setProfile] = useState(null);
   const token = localStorage.getItem("token"); // Get stored token
+  const [isFollowing, setIsFollowing] = useState(false); // Track follow state
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const headers = token ? { Authorization: `Bearer ${token}` } : {};
         const response = await axios.get(`http://localhost:8000/api/users/${username}`, { headers });
+
         setProfile(response.data.user);
+        if (token) {
+          setIsFollowing(response.data.user.is_following); // ✅ Set follow state only if logged in
+        }
       } catch (error) {
         console.error("Error fetching profile", error);
       }
@@ -29,14 +34,18 @@ const UserProfileSidebar = ({ username }) => {
     }
 
     try {
-      const url = profile.is_following
+      const url = isFollowing
         ? "http://localhost:8000/api/unfollow"
         : "http://localhost:8000/api/follow";
 
       await axios.post(url, { username }, { headers: { Authorization: `Bearer ${token}` } });
 
-      // Update profile state to reflect follow/unfollow
-      setProfile((prev) => ({ ...prev, is_following: !prev.is_following }));
+      // Update state
+      setIsFollowing(!isFollowing);
+      setProfile((prev) => ({
+        ...prev,
+        followers: isFollowing ? prev.followers - 1 : prev.followers + 1, // Update followers count
+      }));
     } catch (error) {
       console.error("Error following/unfollowing", error);
     }
@@ -64,8 +73,8 @@ const UserProfileSidebar = ({ username }) => {
 
       {/* Show Follow button only if logged in and viewing another user's profile */}
       {user?.username !== username && token && (
-        <button className={`follow-btn ${profile.is_following ? "unfollow" : ""}`} onClick={handleFollowToggle}>
-          {profile.is_following ? "Unfollow" : "Follow"}
+        <button className={`follow-btn ${isFollowing ? "unfollow" : ""}`} onClick={handleFollowToggle}>
+          {isFollowing ? "Unfollow" : "Follow"}
         </button>
       )}
     </div>
