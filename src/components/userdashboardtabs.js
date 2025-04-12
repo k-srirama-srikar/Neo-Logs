@@ -3,6 +3,9 @@ import BlogsTab from "./BlogsTab";
 import CommentsTab from "./CommentsTab";
 import DraftsTab from "./DraftsTab";
 import FavoritesTab from "./FavoritesTab";
+import FollowersTab from "./followersTab"; // import this
+import FollowingTab from "./followingTab";
+
 
 const UserDashboardTabs = ({ username, isOwner }) => {
   const [activeTab, setActiveTab] = useState("overview");
@@ -16,8 +19,11 @@ const UserDashboardTabs = ({ username, isOwner }) => {
         {isOwner && <button onClick={() => setActiveTab("drafts")}>Drafts</button>}
         {isOwner && <button onClick={() => setActiveTab("favorites")}>Favorites</button>}
         {isOwner && <button onClick={() => setActiveTab("configure")}>Configure</button>}
+        <button onClick={() => setActiveTab("followers")}>Followers</button>
+        <button onClick={() => setActiveTab("following")}>Following</button>
       </div>
-      
+      {activeTab === "followers" && <FollowersTab username={username} />}
+      {activeTab === "following" && <FollowingTab username={username} />}
       {activeTab === "overview" && <p>User Bio here</p>}
       {activeTab === "blogs" && <BlogsTab username={username} />}
       {activeTab === "comments" && <CommentsTab username={username} />}

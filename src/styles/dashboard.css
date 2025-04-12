@@ -17,14 +17,53 @@
   }
   .tab-buttons {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    /* gap: 10px;
+    margin-bottom: 10px; */
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
   }
   
   .tab-buttons button {
     padding: 8px 12px;
     border: none;
     background-color: #007bff;
+    border-radius: 8px;
     color: white;
     cursor: pointer;
   } 
+ 
+
+  /*
+  .tabs-container {
+  flex: 1;
+  padding: 1rem;
+}
+
+.tabs-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tabs-header button {
+  padding: 0.5rem 1rem;
+  background: #f4f4f4;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tabs-header button:hover {
+  background: #e0e0e0;
+}
+
+.tabs-content {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+  
+  */
