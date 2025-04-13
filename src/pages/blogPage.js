@@ -37,7 +37,7 @@ const BlogsPage = () => {
             {blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)}
         </div>
     )}
-  </div>
+    </div>
 )
 };
 

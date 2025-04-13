@@ -37,8 +37,8 @@ const FollowersTab = ({ username }) => {
         // </ul>
         <div className="followers-container">
         {followers.map((user) => (
-            <Link to={`/users/${user.username}`}>
-            <div key={user.id} className="follower-card">
+            <Link key={user.id} to={`/users/${user.username}`}>
+            <div className="follower-card">
                     <span>
                     <div className="follower-info">
                     <img src={user.profile_picture || "/default_avatar.png"} alt="avatar" className="follower-avatar" />
