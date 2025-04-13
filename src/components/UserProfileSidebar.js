@@ -20,7 +20,7 @@ const UserProfileSidebar = ({ username }) => {
           setIsFollowing(response.data.user.is_following); // ✅ Set follow state only if logged in
         }
       } catch (error) {
-        console.error("Error fetching profile", error);
+        console.error("Error fetching profile ???", error);
       }
     };
 

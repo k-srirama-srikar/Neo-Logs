@@ -7,20 +7,24 @@ import { useParams } from "react-router-dom";
 import UserProfileSidebar from "../components/UserProfileSidebar";
 import UserDashboardTabs from "../components/userdashboardtabs";
 import { useState, useEffect } from "react";
+// import {useEffect} from "react";
 import axios from "axios";
 import "../styles/dashboard.css";
 
 const DashboardPage = () => {
   const { username } = useParams(); // Get the username from the URL
   const [isOwner, setIsOwner] = useState(false);
-
+  // setIsOwner(false);
+  // const isOwner = false
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios
-      .get(`http://localhost:8000/api/users/${username}`)
-      .then((response) => {console.log("API Response:", response.data);setIsOwner(response.data.is_owner);
+      .get(`http://localhost:8000/api/users/${username}`, {headers})
+      .then((response) => {console.log("API Response:", response.data);setIsOwner(response.data.is_owner)
         
       })
-      .catch((error) => console.error("Error fetching profile", error));
+      .catch((error) => console.error("Error fetching profile ??", error));
   }, [username]);
 
   return (

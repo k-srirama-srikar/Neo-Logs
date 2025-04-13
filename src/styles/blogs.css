@@ -1,0 +1,34 @@
+.blogs-container {
+    padding: 2rem;
+  }
+  
+  .blog-card {
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  .blog-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-card .author {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-card .tags {
+    margin-top: 0.5rem;
+    color: #007bff;
+  }
+  
+  .blog-card .read-more {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  

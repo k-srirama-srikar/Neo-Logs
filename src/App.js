@@ -8,6 +8,9 @@ import Register from './pages/register'; // Import the Register component
 import Login from './pages/login';
 import NotFound from './pages/notfound';
 import DashboardPage from './pages/dashboard';
+import BlogsPage from './pages/blogPage';
+import BlogDetailPage from './pages/blogDetail';
+import BlogEditor from './pages/blogEditor';
 function App() {
   return (
     // <div className="App">
@@ -35,6 +38,9 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path="*" element={<NotFound />} />
           <Route path="/users/:username" element={<DashboardPage />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blogs/:id" element={<BlogDetailPage />} />
+          <Route path="/blogs/new" element={<BlogEditor />} />
         </Routes>
       </Router>
     // );

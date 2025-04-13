@@ -1,0 +1,24 @@
+.blog-detail-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+  }
+  
+  .blog-detail-container h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .blog-detail-container .meta {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 1rem;
+  }
+  
+  .blog-detail-container .tags {
+    margin-top: 1rem;
+    color: #007bff;
+  }
+  
