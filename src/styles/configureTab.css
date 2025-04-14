@@ -1,0 +1,33 @@
+.configure-tab {
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem;
+  }
+  
+  .configure-form label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .configure-form input,
+  .configure-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 1rem;
+  }
+  
+  .configure-form button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .configure-form button:hover {
+    background: #0056b3;
+  }
+  

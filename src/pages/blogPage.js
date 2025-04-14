@@ -7,8 +7,10 @@ import "../styles/blogs.css";
 const BlogsPage = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token); // Set login state
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .get(`http://localhost:8000/api/blogs`, {headers})
@@ -28,7 +30,11 @@ const BlogsPage = () => {
     <div className="blogs-page">
       <div className="blogs-header">
         <h2>📝 All Blogs</h2>
-        <Link to="/blogs/new"><button className="post-btn">Post Blog</button></Link>
+        {isLoggedIn && (
+          <Link to="/blogs/new">
+            <button className="post-btn">Post Blog</button>
+          </Link>
+        )}
       </div>
       {blogs.length === 0 ? (
           <p>No blogs found.</p>
