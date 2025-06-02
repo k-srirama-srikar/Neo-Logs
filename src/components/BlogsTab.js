@@ -29,7 +29,7 @@ const UserBlogs = ({ username }) => {
             <h2>📝 @{username}'s Blogs</h2>
             <Link to="/blogs/new"><button className="post-btn">Post Blog</button></Link>
           </div>
-          {blogs.length === 0 ? (
+          {blogs === null ? (
               <p>No blogs found.</p>
             ) : (
             <div className="blog-list">

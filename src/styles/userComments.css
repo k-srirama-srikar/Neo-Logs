@@ -1,0 +1,54 @@
+.comments-tab {
+  padding: 1.5rem;
+  max-width: 800px;
+  margin: auto;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.comments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.comment-group {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.comment-blog-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.comment-blog-title:hover {
+  text-decoration: underline;
+}
+
+.comment-list {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+}
+
+.comment-box {
+  background-color: #f9f9f9;
+  border-left: 4px solid #3b82f6;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  border-radius: 6px;
+}
+
+.comment-content {
+  margin: 0;
+}
+
+.comment-date {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
+}

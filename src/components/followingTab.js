@@ -22,8 +22,8 @@ const FollowingTab = ({ username }) => {
   return (
     <div className="followers-tab">
       <h3>Following</h3>
-      {followers.length === 0 ? (
-        <p>No followers yet.</p>
+      {followers === null ? (
+        <p>{username} is not following anyone yet...</p>
       ) : (
         //   {followers.map((follower) => (
         //     <li key={follower.id}>

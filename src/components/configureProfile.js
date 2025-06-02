@@ -13,9 +13,9 @@ const ConfigureTab = ({ username }) => {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
 
-  const token = localStorage.getItem("token");
-
+  
   useEffect(() => {
+    const token = localStorage.getItem("token");
     axios.get(`http://localhost:8000/api/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -36,7 +36,8 @@ const ConfigureTab = ({ username }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:8000/api/users/${username}`, profile, {
+    const token = localStorage.getItem("token");
+    axios.put(`http://localhost:8000/api/profile/users/${username}`, profile, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(() => setMessage("Profile updated successfully!"))

@@ -44,6 +44,7 @@ import UserDrafts from "./DraftsTab";
 import FavoritesTab from "./FavoritesTab";
 import FollowersTab from "./followersTab";
 import FollowingTab from "./followingTab";
+import ConfigureTab from "./configureProfile";
 
 const UserDashboardTabs = ({ username, isOwner }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -68,7 +69,8 @@ const UserDashboardTabs = ({ username, isOwner }) => {
       case "following":
         return <FollowingTab username={username} />;
       case "configure":
-        return isOwner && <p>Settings Page</p>;
+        // return isOwner && <p>Settings Page</p>;
+        return isOwner && <ConfigureTab username={username}/>
       default:
         return <p>User Bio here</p>;
     }

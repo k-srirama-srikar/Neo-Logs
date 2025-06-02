@@ -29,8 +29,8 @@ const UserDrafts = ({ username }) => {
             <h2>📝 @{username}'s Drafts</h2>
             {/* <Link to="/blogs/new"><button className="post-btn">Post Blog</button></Link> */}
           </div>
-          {blogs.length === 0 ? (
-              <p>No blogs found.</p>
+          {blogs === null ? (
+              <p>No drafts found.</p>
             ) : (
             <div className="blog-list">
                 {blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)}

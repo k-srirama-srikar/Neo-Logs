@@ -22,8 +22,8 @@ const FollowersTab = ({ username }) => {
   return (
     <div className="followers-tab">
       <h3>Followers</h3>
-      {followers.length === 0 ? (
-        <p>No followers yet.</p>
+      {followers === null ? (
+        <p>{username} does not have any followers yet...</p>
       ) : (
         // <ul>
         //   {followers.map((follower) => (
@@ -36,6 +36,7 @@ const FollowersTab = ({ username }) => {
         //   ))}
         // </ul>
         <div className="followers-container">
+          
         {followers.map((user) => (
             <Link key={user.id} to={`/users/${user.username}`}>
             <div className="follower-card">
