@@ -64,8 +64,8 @@ const BlogEditor = () => {
           placeholder="Write your blog in Markdown..."
         />
         <div className="editor-buttons">
-          <button onClick={() => setStatus("draft")}>Save Draft</button>
-          <button onClick={() => {setStatus("published");setVisibility(true);}}>Publish</button>
+          <button onClick={() => setStatus("draft")}>Set as draft</button>
+          <button onClick={() => {setStatus("published");setVisibility(true);}}>Set as public blog</button>
           <button onClick={insertImage}>Insert Image</button>
           <button onClick={handleSubmit}>Submit</button>
         </div>

@@ -41,10 +41,11 @@ import { useSearchParams } from "react-router-dom";
 import UserBlogs from "./BlogsTab";
 import CommentsTab from "./CommentsTab";
 import UserDrafts from "./DraftsTab";
-import FavoritesTab from "./FavoritesTab";
+// import FavoritesTab from "./FavoritesTab";
 import FollowersTab from "./followersTab";
 import FollowingTab from "./followingTab";
 import ConfigureTab from "./configureProfile";
+import OverviewTab from "./OverviewTab";
 
 const UserDashboardTabs = ({ username, isOwner }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -62,8 +63,8 @@ const UserDashboardTabs = ({ username, isOwner }) => {
         return <CommentsTab username={username} />;
       case "drafts":
         return isOwner && <UserDrafts username={username} />;
-      case "favorites":
-        return isOwner && <FavoritesTab username={username} />;
+      // case "favorites":
+      //   return isOwner && <FavoritesTab username={username} />;
       case "followers":
         return <FollowersTab username={username} />;
       case "following":
@@ -72,7 +73,7 @@ const UserDashboardTabs = ({ username, isOwner }) => {
         // return isOwner && <p>Settings Page</p>;
         return isOwner && <ConfigureTab username={username}/>
       default:
-        return <p>User Bio here</p>;
+        return <OverviewTab username={username}/>;
     }
   };
 
@@ -83,7 +84,7 @@ const UserDashboardTabs = ({ username, isOwner }) => {
         <button onClick={() => changeTab("blogs")}>Blogs</button>
         <button onClick={() => changeTab("comments")}>Comments</button>
         {isOwner && <button onClick={() => changeTab("drafts")}>Drafts</button>}
-        {isOwner && <button onClick={() => changeTab("favorites")}>Favorites</button>}
+        {/* {isOwner && <button onClick={() => changeTab("favorites")}>Favorites</button>} */}
         {isOwner && <button onClick={() => changeTab("configure")}>Configure</button>}
         <button onClick={() => changeTab("followers")}>Followers</button>
         <button onClick={() => changeTab("following")}>Following</button>

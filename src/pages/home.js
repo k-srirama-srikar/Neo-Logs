@@ -10,16 +10,16 @@ const Home = () => {
       </header>
       <section className="home-content">
         <div className="home-card">
-          <h2>Feature 1</h2>
-          <p>Create and manage your blog posts easily.</p>
+          <h3><i>Create and manage your blog posts easily.</i></h3>
+          {/* <p></p> */}
         </div>
         <div className="home-card">
-          <h2>Feature 2</h2>
-          <p>Engage with readers through comments and discussions.</p>
+          <h3><i>Engage with readers through comments and discussions.</i></h3>
+          <p></p>
         </div>
         <div className="home-card">
-          <h2>Feature 3</h2>
-          <p>Search and filter blogs to find what you love.</p>
+          <h3><i>Configure your profile in a way that you love.</i></h3>
+          <p></p>
         </div>
       </section>
     </div>

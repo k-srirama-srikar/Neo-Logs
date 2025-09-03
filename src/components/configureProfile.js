@@ -8,6 +8,7 @@ const ConfigureTab = ({ username }) => {
     bio: "",
     overview: "",
     profile_picture: ""
+    
   });
 
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,9 @@ const ConfigureTab = ({ username }) => {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => {
-      setProfile(res.data);
+      setProfile(res.data.user);
+      console.log("Data : ", res.data.user);
+      // console.log("profile", profile);
       setLoading(false);
     })
     .catch(err => {

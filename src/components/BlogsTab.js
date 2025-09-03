@@ -5,13 +5,25 @@ import { Link } from "react-router-dom";
 
 const UserBlogs = ({ username }) => {
   const [blogs, setBlogs] = useState([]);
+  const [isOwner, setIsOwner] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios.get(`http://localhost:8000/api/blogs/users/${username}`, {headers})
-      .then((res) => setBlogs(res.data))
+      .then((res) => {setBlogs(res.data);})
       .catch((err) => console.error(err));
+  }, [username]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+    axios
+      .get(`http://localhost:8000/api/users/${username}`, {headers})
+      .then((response) => {console.log("API Response:", response.data);setIsOwner(response.data.is_owner)
+        
+      })
+      .catch((error) => console.error("Error fetching profile ??", error));
   }, [username]);
 
   return (
@@ -27,7 +39,12 @@ const UserBlogs = ({ username }) => {
     <div className="blogs-page">
           <div className="blogs-header">
             <h2>📝 @{username}'s Blogs</h2>
-            <Link to="/blogs/new"><button className="post-btn">Post Blog</button></Link>
+            {/* <Link to="/blogs/new"><button className="post-btn">Post Blog</button></Link> */}
+            {isOwner && (
+              <Link to="/blogs/new">
+                <button className="post-btn">Post Blog</button>
+              </Link>
+            )}
           </div>
           {blogs === null ? (
               <p>No blogs found.</p>

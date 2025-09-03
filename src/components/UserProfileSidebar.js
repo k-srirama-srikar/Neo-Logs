@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import "../styles/sidebar.css";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const UserProfileSidebar = ({ username }) => {
   const { user } = useContext(AuthContext); // Get logged-in user info
@@ -51,6 +52,11 @@ const UserProfileSidebar = ({ username }) => {
     }
   };
 
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(`?tab=configure`);
+  };
+
   if (!profile) return <p>Loading...</p>;
 
   return (
@@ -68,7 +74,7 @@ const UserProfileSidebar = ({ username }) => {
       
       {/* Show Edit Profile button only if the logged-in user is viewing their own profile */}
       {user?.username === username && (
-        <button className="edit-profile-btn">Edit Profile</button>
+        <button className="edit-profile-btn" onClick={handleClick}>Edit Profile</button>
       )}
 
       {/* Show Follow button only if logged in and viewing another user's profile */}
