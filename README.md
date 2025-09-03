@@ -41,4 +41,4 @@ There are still a lot of features that can be implemented, but that's probably f
 Above is the ER diagram made using eraser
 
 
-## The walkthrough of the Blogging Platform can be found [here](https://github.com/k-srirama-srikar/neo-logs/Walkthrough/README.md)
+## The walkthrough of the Blogging Platform can be found [here](https://github.com/k-srirama-srikar/Neo-Logs/blob/main/Walkthrough/README.md)
