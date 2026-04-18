@@ -80,14 +80,14 @@ const UserDashboardTabs = ({ username, isOwner }) => {
   return (
     <div className="dashboard-content">
       <div className="tab-buttons">
-        <button onClick={() => changeTab("overview")}>Overview</button>
-        <button onClick={() => changeTab("blogs")}>Blogs</button>
-        <button onClick={() => changeTab("comments")}>Comments</button>
-        {isOwner && <button onClick={() => changeTab("drafts")}>Drafts</button>}
-        {/* {isOwner && <button onClick={() => changeTab("favorites")}>Favorites</button>} */}
-        {isOwner && <button onClick={() => changeTab("configure")}>Configure</button>}
-        <button onClick={() => changeTab("followers")}>Followers</button>
-        <button onClick={() => changeTab("following")}>Following</button>
+        <button className={currentTab === "overview" ? "active" : ""} onClick={() => changeTab("overview")}>Overview</button>
+        <button className={currentTab === "blogs" ? "active" : ""} onClick={() => changeTab("blogs")}>Blogs</button>
+        <button className={currentTab === "comments" ? "active" : ""} onClick={() => changeTab("comments")}>Comments</button>
+        {isOwner && <button className={currentTab === "drafts" ? "active" : ""} onClick={() => changeTab("drafts")}>Drafts</button>}
+        {/* {isOwner && <button className={currentTab === "favorites" ? "active" : ""} onClick={() => changeTab("favorites")}>Favorites</button>} */}
+        {isOwner && <button className={currentTab === "configure" ? "active" : ""} onClick={() => changeTab("configure")}>Configure</button>}
+        <button className={currentTab === "followers" ? "active" : ""} onClick={() => changeTab("followers")}>Followers</button>
+        <button className={currentTab === "following" ? "active" : ""} onClick={() => changeTab("following")}>Following</button>
       </div>
 
       <div className="tab-content">{renderTabContent()}</div>

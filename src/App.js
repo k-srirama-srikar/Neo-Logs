@@ -40,6 +40,7 @@ function App() {
           <Route path="/users/:username" element={<DashboardPage />} />
           <Route path="/blogs" element={<BlogsPage />} />
           <Route path="/blogs/:id" element={<BlogDetailPage />} />
+          <Route path="/blogs/:id/edit" element={<BlogEditor />} />
           <Route path="/blogs/new" element={<BlogEditor />} />
         </Routes>
       </Router>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BlogCard from "../components/blogCard";
-// import { Link } from "react-router-dom";
 
 const UserDrafts = ({ username }) => {
   const [blogs, setBlogs] = useState([]);
@@ -15,28 +14,18 @@ const UserDrafts = ({ username }) => {
   }, [username]);
 
   return (
-    // <div className="blogs">
-    //   <h2>{username}'s Blogs</h2>
-    //   {blogs.map((blog) => (
-    //     <div key={blog.id} className="blog-post">
-    //       <h3>{blog.title}</h3>
-    //       <p>{blog.content}</p>
-    //     </div>
-    //   ))}
-    // </div>
     <div className="blogs-page">
-          <div className="blogs-header">
-            <h2>📝 @{username}'s Drafts</h2>
-            {/* <Link to="/blogs/new"><button className="post-btn">Post Blog</button></Link> */}
-          </div>
-          {blogs === null ? (
-              <p>No drafts found.</p>
-            ) : (
-            <div className="blog-list">
-                {blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)}
-            </div>
-        )}
+      <div className="blogs-header">
+        <h2>📝 @{username}'s Drafts</h2>
+      </div>
+      {blogs === null || blogs.length === 0 ? (
+          <p>No drafts found.</p>
+        ) : (
+        <div className="blog-list">
+            {blogs.map(blog => <BlogCard key={blog.id} blog={blog} isDraft={true} />)}
         </div>
+      )}
+    </div>
   );
 };
 

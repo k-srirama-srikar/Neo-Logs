@@ -21,7 +21,7 @@ const UserProfileSidebar = ({ username }) => {
           setIsFollowing(response.data.user.is_following); // ✅ Set follow state only if logged in
         }
       } catch (error) {
-        console.error("Error fetching profile ???", error);
+        console.error(`Error fetching profile for user ${username}:`, error);
       }
     };
 
@@ -68,8 +68,12 @@ const UserProfileSidebar = ({ username }) => {
       <p className="profile-username">@{profile.username}</p>
       <p className="profile-bio">{profile.bio || "No bio available."}</p>
       <div className="profile-stats">
-        <p><strong>Followers:</strong> {profile.followers}</p>
-        <p><strong>Following:</strong> {profile.following}</p>
+        <p className="clickable-stat" style={{ cursor: "pointer" }} onClick={() => navigate("?tab=followers")}>
+          <strong>Followers:</strong> {profile.followers}
+        </p>
+        <p className="clickable-stat" style={{ cursor: "pointer" }} onClick={() => navigate("?tab=following")}>
+          <strong>Following:</strong> {profile.following}
+        </p>
       </div>
       
       {/* Show Edit Profile button only if the logged-in user is viewing their own profile */}

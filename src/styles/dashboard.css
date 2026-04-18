@@ -1,69 +1,81 @@
 .dashboard-container {
-    display: flex;
-    max-width: 1200px;
-    margin: auto;
+  display: flex;
+  max-width: 1200px;
+  margin: 2rem auto;
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.profile-sidebar {
+  width: 300px;
+  position: sticky;
+  top: 80px; /* offset for sticky header */
+  height: fit-content;
+}
+
+.dashboard-content {
+  flex: 1;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.tab-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab-buttons::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tab-buttons::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.tab-buttons button {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-buttons button:hover {
+  background-color: var(--color-surface-hover);
+  color: var(--color-primary);
+}
+
+.tab-buttons button.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+@media (max-width: 992px) {
+  .dashboard-container {
+    flex-direction: column;
+    margin: 1rem auto;
   }
   
   .profile-sidebar {
-    width: 20%;
-    height: 100vh;
-    position: sticky;
+    width: 100%;
+    position: relative;
     top: 0;
   }
-  
+
   .dashboard-content {
-    width: 80%;
-    padding: 20px;
+    padding: 1.5rem;
   }
-  .tab-buttons {
-    display: flex;
-    /* gap: 10px;
-    margin-bottom: 10px; */
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .tab-buttons button {
-    padding: 8px 12px;
-    border: none;
-    background-color: #007bff;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-  } 
- 
-
-  /*
-  .tabs-container {
-  flex: 1;
-  padding: 1rem;
 }
-
-.tabs-header {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.tabs-header button {
-  padding: 0.5rem 1rem;
-  background: #f4f4f4;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.tabs-header button:hover {
-  background: #e0e0e0;
-}
-
-.tabs-content {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-  
-  */

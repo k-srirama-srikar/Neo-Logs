@@ -12,7 +12,7 @@ const UserBlogs = ({ username }) => {
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/users/${username}`, {headers})
       .then((res) => {setBlogs(res.data);})
-      .catch((err) => console.error(err));
+      .catch((err) => console.error(`Error fetching blogs for user ${username}:`, err));
   }, [username]);
 
   useEffect(() => {
@@ -20,10 +20,10 @@ const UserBlogs = ({ username }) => {
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}`, {headers})
-      .then((response) => {console.log("API Response:", response.data);setIsOwner(response.data.is_owner)
-        
+      .then((response) => {
+        setIsOwner(response.data.is_owner);
       })
-      .catch((error) => console.error("Error fetching profile ??", error));
+      .catch((error) => console.error(`Error fetching profile for user ${username}:`, error));
   }, [username]);
 
   return (

@@ -34,16 +34,19 @@
 
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import CommentBox from "./CommentBox";
 import "../../styles/commentBox.css"; // Import the shared CSS file
 
-export default function CommentItem({ comment, onReply, onDelete, children }) {
+export default function CommentItem({ comment, onReply, onDelete, currentUserId, children }) {
   const [replying, setReplying] = useState(false);
 
   return (
     <div className="comment-item">
       <div className="comment-header">
-        <span className="comment-user">{comment.user_name}</span>
+        <span className="comment-user">
+          <Link to={`/users/${comment.user_name}`}>{comment.user_name}</Link>
+        </span>
         <span className="comment-date">
           {new Date(comment.created_at).toLocaleString()}
         </span>
@@ -53,7 +56,9 @@ export default function CommentItem({ comment, onReply, onDelete, children }) {
         <button onClick={() => setReplying(!replying)}>
           {replying ? "Cancel" : "Reply"}
         </button>
-        <button onClick={() => onDelete(comment.id)}>Delete</button>
+        {currentUserId === comment.user_id && (
+          <button onClick={() => onDelete(comment.id)}>Delete</button>
+        )}
       </div>
       {replying && (
         <CommentBox

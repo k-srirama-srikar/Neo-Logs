@@ -110,7 +110,6 @@ export default function CommentsSection({ blogId, userId }) {
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/comments/${blogId}`);
         // Ensure comments is always an array
         setComments(Array.isArray(response.data) ? response.data : []);
-        console.log(response.data)
       } catch (err) {
         console.error("Failed to load comments", err);
         setComments([]); // fallback to empty array on error
@@ -162,23 +161,6 @@ export default function CommentsSection({ blogId, userId }) {
     }
   };
 
-  // const buildTree = (flat) => {
-  //   if (!Array.isArray(flat)) return [];
-  //   const map = {};
-  //   const tree = [];
-
-  //   flat.forEach((comment) => (map[comment.id] = { ...comment, children: [] }));
-  //   flat.forEach((comment) => {
-  //     if (comment.parent_comment_id) {
-  //       map[comment.parent_comment_id]?.children.push(map[comment.id]);
-  //     } else {
-  //       tree.push(map[comment.id]);
-  //     }
-  //   });
-
-  //   return tree;
-  // };
-
   const renderTree = (nodes) =>
     nodes.map((comment) => (
       <CommentItem
@@ -186,6 +168,7 @@ export default function CommentsSection({ blogId, userId }) {
         comment={comment}
         onReply={handleAddComment}
         onDelete={handleDeleteComment}
+        currentUserId={userId}
       >
         {renderTree(comment.children || [])}
       </CommentItem>

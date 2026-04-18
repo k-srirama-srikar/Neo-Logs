@@ -1,46 +1,75 @@
 .editor-container {
-    display: flex;
-    height: 90vh;
-    padding: 20px;
-    gap: 20px;
+  display: flex;
+  height: calc(100vh - 80px); /* subtract header height roughly */
+  padding: 1.5rem;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.editor-left, .editor-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  padding: 1.5rem;
+}
+
+.editor-left h2, .editor-right h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.editor-title, .editor-tags {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  font-size: 1.1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+}
+
+.editor-textarea {
+  flex: 1;
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  resize: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  line-height: 1.6;
+}
+
+.editor-textarea:focus, .editor-title:focus, .editor-tags:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.15);
+}
+
+.editor-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.editor-right {
+  overflow-y: auto;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .editor-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
   }
   
   .editor-left, .editor-right {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    flex: none;
+    min-height: 50vh;
   }
-  
-  .editor-title, .editor-tags {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 1.2rem;
-  }
-  
-  .editor-textarea {
-    flex: 1;
-    padding: 10px;
-    font-family: monospace;
-    font-size: 1rem;
-    resize: none;
-    border: 1px solid #ccc;
-  }
-  
-  .editor-buttons {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-    justify-content: flex-start;
-  }
-  
-  .editor-buttons button {
-    padding: 8px 16px;
-    cursor: pointer;
-  }
-  
-  .editor-right {
-    border-left: 1px solid #ddd;
-    padding-left: 20px;
-    overflow-y: auto;
-  }
-  
+}
