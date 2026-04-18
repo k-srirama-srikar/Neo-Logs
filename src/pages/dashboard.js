@@ -20,7 +20,7 @@ const DashboardPage = () => {
     const token = localStorage.getItem("token");
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios
-      .get(`http://localhost:8000/api/users/${username}`, {headers})
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}`, {headers})
       .then((response) => {console.log("API Response:", response.data);setIsOwner(response.data.is_owner)
         
       })

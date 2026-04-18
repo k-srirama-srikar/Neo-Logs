@@ -26,7 +26,7 @@ const Register = () => {
 
     try {
       // Send registration request to the backend
-      await axios.post('http://localhost:8000/api/register', {
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/register`, {
         name,
         email,
         password,

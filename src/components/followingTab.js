@@ -9,7 +9,7 @@ const FollowingTab = ({ username }) => {
   useEffect(() => {
     const fetchFollowers = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/users/${username}/following`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}/following`);
         setFollowers(res.data.followers);
       } catch (err) {
         console.error("Error fetching following", err);

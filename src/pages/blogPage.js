@@ -13,7 +13,7 @@ const BlogsPage = () => {
     setIsLoggedIn(!!token); // Set login state
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios
-      .get(`http://localhost:8000/api/blogs`, {headers})
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs`, {headers})
       .then(res => {
         const data = res.data||[];
         console.log(res.data);

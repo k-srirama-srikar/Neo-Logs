@@ -14,7 +14,7 @@ const BlogDetailPage = () => {
     const token = localStorage.getItem("token");
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-    axios.get(`http://localhost:8000/api/blogs/${blogId}`, { headers })
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/${blogId}`, { headers })
       .then(res => setBlog(res.data))
       .catch(err => console.error("Error loading blog", err));
   }, [blogId]);
@@ -25,7 +25,7 @@ const BlogDetailPage = () => {
       if (!token) return;
 
       try {
-        const res = await axios.get("http://localhost:8000/api/me", {
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUserId(res.data.id);

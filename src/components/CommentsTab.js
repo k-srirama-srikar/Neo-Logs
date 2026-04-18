@@ -11,7 +11,7 @@ const UserComments = ({ username }) => {
     const token = localStorage.getItem("token");
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios
-      .get(`http://localhost:8000/api/comments/users/${username}`, { headers })
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/comments/users/${username}`, { headers })
       .then((res) => {
         const comments = res.data || [];
         const grouped = comments.reduce((acc, comment) => {

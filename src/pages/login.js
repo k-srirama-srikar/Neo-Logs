@@ -15,7 +15,7 @@ const Login = () => {
     // console.log("Attempting login with:", { identifier, password });
   
     try {
-      const response = await fetch('http://localhost:8000/api/login', {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const Login = () => {
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   try {
-  //     const response = await axios.post('http://localhost:8000/api/login', {
+  //     const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`, {
   //       identifier, 
   //       password,
   //     });
@@ -61,7 +61,7 @@ const Login = () => {
 
 
   //   // Perform login (mock API call here, replace with real API)
-  //   // const response = await axios.post('http://localhost:8000/api/login',{
+  //   // const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/login`,{
   //   //   identifier,
   //   //   password,
   //   // });

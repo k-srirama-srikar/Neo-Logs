@@ -14,7 +14,7 @@ const UserProfileSidebar = ({ username }) => {
     const fetchProfile = async () => {
       try {
         const headers = token ? { Authorization: `Bearer ${token}` } : {};
-        const response = await axios.get(`http://localhost:8000/api/users/${username}`, { headers });
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}`, { headers });
 
         setProfile(response.data.user);
         if (token) {
@@ -36,8 +36,8 @@ const UserProfileSidebar = ({ username }) => {
 
     try {
       const url = isFollowing
-        ? "http://localhost:8000/api/unfollow"
-        : "http://localhost:8000/api/follow";
+        ? `${process.env.REACT_APP_BACKEND_URL}/api/unfollow`
+        : `${process.env.REACT_APP_BACKEND_URL}/api/follow`;
 
       await axios.post(url, { username }, { headers: { Authorization: `Bearer ${token}` } });
 

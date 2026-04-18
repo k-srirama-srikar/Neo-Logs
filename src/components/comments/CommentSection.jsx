@@ -9,7 +9,7 @@
 //   useEffect(() => {
 //     const fetchComments = async () => {
 //       try {
-//         const response = await axios.get(`http://localhost:8000/api/blogs/comments/${blogId}`);
+//         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/comments/${blogId}`);
 //         // Ensure comments is always an array
 //         setComments(Array.isArray(response.data) ? response.data : []);
 //       } catch (err) {
@@ -107,7 +107,7 @@ export default function CommentsSection({ blogId, userId }) {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/comments/${blogId}`);
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/comments/${blogId}`);
         // Ensure comments is always an array
         setComments(Array.isArray(response.data) ? response.data : []);
         console.log(response.data)
@@ -122,7 +122,7 @@ export default function CommentsSection({ blogId, userId }) {
 
   const fetchComments = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/comments/${blogId}`);
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/comments/${blogId}`);
       setComments(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Failed to fetch comments", err);
@@ -132,7 +132,7 @@ export default function CommentsSection({ blogId, userId }) {
 
   const handleAddComment = async (content, parentId = null) => {
     try {
-      await axios.post(`http://localhost:8000/api/comments/${blogId}`,
+      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/comments/${blogId}`,
         {
           content,
           parent_comment_id: parentId,
@@ -151,7 +151,7 @@ export default function CommentsSection({ blogId, userId }) {
 
   const handleDeleteComment = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/comments/${id}`, {
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/comments/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

@@ -6,11 +6,11 @@ const FollowersList = ({ username }) => {
   const [following, setFollowing] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/users/${username}/followers`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}/followers`)
       .then((res) => setFollowers(res.data))
       .catch((err) => console.error(err));
 
-    axios.get(`http://localhost:8000/api/users/${username}/following`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}/following`)
       .then((res) => setFollowing(res.data))
       .catch((err) => console.error(err));
   }, [username]);

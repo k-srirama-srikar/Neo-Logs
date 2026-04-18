@@ -8,7 +8,7 @@ const UserProfile = ({ username }) => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/users/${username}`);
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}`);
         setUser(response.data);
       } catch (err) {
         setError("User not found");

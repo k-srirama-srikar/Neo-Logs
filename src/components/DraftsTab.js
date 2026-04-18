@@ -9,7 +9,7 @@ const UserDrafts = ({ username }) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
-    axios.get(`http://localhost:8000/api/blogs/drafts/users/${username}`, {headers})
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/blogs/drafts/users/${username}`, {headers})
       .then((res) => setBlogs(res.data))
       .catch((err) => console.error(err));
   }, [username]);

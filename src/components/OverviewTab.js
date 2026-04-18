@@ -11,7 +11,7 @@ const OverviewTab = ({ username }) => {
     const token = localStorage.getItem("token");
     const headers = token ? { Authorization: `Bearer ${token}` } : {};
     axios
-      .get(`http://localhost:8000/api/users/${username}`, { headers })
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}`, { headers })
       .then((res) => {
         setContent(res.data.user.overview);
         setLoading(false);

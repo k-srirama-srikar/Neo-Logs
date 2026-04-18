@@ -21,7 +21,7 @@ const BlogEditor = () => {
     };
 
     axios
-      .post("http://localhost:8000/api/blogs", blogData, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/api/blogs`, blogData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`, // Adjust based on how you store token
         },

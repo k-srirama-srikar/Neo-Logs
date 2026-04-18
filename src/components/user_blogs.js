@@ -5,7 +5,7 @@ const UserBlogs = ({ username }) => {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/users/${username}/blogs`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}/blogs`)
       .then((res) => setBlogs(res.data))
       .catch((err) => console.error(err));
   }, [username]);

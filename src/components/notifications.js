@@ -5,7 +5,7 @@ const Notifications = ({ username }) => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/users/${username}/notifications`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/users/${username}/notifications`)
       .then((res) => setNotifications(res.data))
       .catch((err) => console.error(err));
   }, [username]);
